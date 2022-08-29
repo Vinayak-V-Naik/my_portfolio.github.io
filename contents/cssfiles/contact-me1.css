@@ -1,0 +1,181 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+    box-sizing: border-box;
+}
+.contactpage
+{
+       background: #000000 ;
+       min-height: 100vh;
+       width: 100%;
+       color: #fff;
+       position: relative;
+
+}
+
+nav
+{
+      display: flex;
+      align-items: center;
+      padding: 20px 8%; 
+}
+
+nav .menu-img
+{
+      width: 25px;
+      margin-right: 20px;
+      cursor: pointer;
+}
+nav h1
+{
+    font-size: 40px;
+    font-weight: 400;
+}
+
+nav h1 span
+{ 
+    font-size: 40px;
+    font-weight: 540;
+    color:#00986f;
+}
+
+nav ul
+{
+    flex:1;
+    text-align: right;
+}
+
+nav ul li
+{
+    display: inline-block;
+    list-style: none;
+    margin: 0 20px
+}
+
+nav ul li a
+{
+    text-decoration: none;
+    color: #fff 
+}
+nav ul li .abc
+{
+    text-decoration: none;
+    color: #ffa500; 
+
+}
+.text-container h1
+{
+    font-size: 30px;
+    font-weight: 400;
+    padding: 14px 128px;
+    text-align: left;
+}
+.line1
+{
+      width: 70px;
+      height: 5px;
+      border:none;
+      background: #00986f;
+      border-top: 3px solid #00986f;
+      margin: 0 128px;
+      border-radius: 2px;
+      margin-top: 0px;
+      margin-left: 8.3%;
+     
+}
+.line2
+{
+      width: 30px;
+      height: 5px;
+      background: #00986f;
+      border-top: solid #00986f;
+      margin: 5 128px;
+      border-radius: 2px;
+      margin-top: 5px;
+      margin-left: 8.3%;
+      border:none;
+}
+.box1
+{
+    width:300px;
+    height: 315px;
+    background:#000000;
+    margin-top: 2%;
+    margin-left: 13%;
+    position: absolute;
+    box-sizing: border-box ;
+    border: 3px solid #00986f;
+    border-radius: 10px;
+    padding: 0px 0px;
+}
+.box2
+{
+    width:300px;
+    height: 315px;
+    background:#000000;
+    top:-1%;
+    left:140%;
+    position: absolute;
+    box-sizing: border-box ;
+    border: 3px solid #00986f;
+    border-radius: 10px;
+    padding: 0px 0px;
+}
+.box3
+{
+    width:300px;
+    height: 315px;
+    background:#000000;
+    top:-1%;
+    left:140%;
+    position: absolute;
+    box-sizing: border-box ;
+    border: 3px solid #00986f;
+    border-radius: 10px;
+    padding: 0px 0px;
+}
+.text-container .linkedin
+{
+    width: 150px;
+    height: 150px;
+    margin-left: 25%;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 8px;
+
+}
+.text-container h2
+{
+    text-decoration: none;
+    background: #1d2026 ; 
+    border: 1.6px solid #00986f;
+    padding: 10px 25px;
+    display: inline-block;
+    color: #fff;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left: 90px;
+    border-radius: 30px;
+}
+.text-container p
+{
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-left: 5%;
+    color: #999;
+    text-align: center;
+  
+}
+.text-container .email
+{
+    width: 150px;
+    height: 150px;
+    margin-left: 25%;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 8px;
+
+}
