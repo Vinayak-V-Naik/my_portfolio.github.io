@@ -1,7 +1,3 @@
-html
-{
-  font-size: 62.5%;
-}
 *
 {
     margin: 0;
@@ -23,47 +19,45 @@ html
 nav
 {
       display: flex;
-      padding: 0rem 0rem; 
+      align-items: center;
+      padding: 20px 8%; 
 }
 
 nav .menu-img
 {
-     width: 2.5rem;
-     margin-top: 2rem;
-     margin-left: 13rem;
-     cursor: pointer;
+      width: 25px;
+      margin-right: 20px;
+      cursor: pointer;
 }
 nav h1
 {
-    font-size: 4rem;
+    font-size: 40px;
     font-weight: 400;
-    padding:1rem;
 }
 
 nav h1 span
 { 
-    font-size: 4rem;
+    font-size: 40px;
     font-weight: 540;
     color:#00986f;
 }
 
 nav ul
 {
-    flex:1;
-    text-align:center;
-    margin-left: 60rem;
+     flex:1;
+    text-align: right; 
+
 }
 
 nav ul li
 {
     display: inline-block;
     list-style: none;
-    margin: 2.5rem 2rem ;
+    margin: 0 20px
 }
 
 nav ul li a
 {
-    font-size: 2rem;
     text-decoration: none;
     color: #fff ;
    
@@ -76,28 +70,35 @@ nav ul li .abc
 }
 .home-img
 {
-
-    width: 80rem;
-    margin-left: 90rem;
-    margin-top: 4rem;
+    position: absolute;
+    top: 170px;
+    left: 320px;
+    width: 340%;
 }
 
+.home-container
+{
+    position: absolute;
+    top: -50px;
+    left: 28%;
+    width: 200px;
+}
 .text-container
 {
-    max-width: 60rem;
-    margin-top: -50rem;
-    margin-left: 13rem;
+    max-width: 600px;
+    margin-top: 6%;
+    margin-left: 8%;
 
 }
 
 .text-container h1
 {
-     font-size: 8rem;
+     font-size: 70px;
      font-weight: 400;
 }
 .text-container p
 {
-    font-size: 2.1rem;
+    font-size: 20px;
     font-weight: 400;
     color: #999;
     font-style: normal;
@@ -107,12 +108,12 @@ nav ul li .abc
 {
     text-decoration: none;
     background: #00986f ; 
-    padding: 1.4rem 4rem;
+    padding: 14px 40px;
     display: inline-block;
     color: #fff;
-    font-size: 1.8rem;
-    margin-top: 3rem;
-    border-radius: 3rem;
+    font-size: 18px;
+    margin-top: 30px;
+    border-radius: 30px;
 }
 
 .control
@@ -120,36 +121,33 @@ nav ul li .abc
      display: flex;
      align-items: center ;
      justify-content: flex-end;
-     margin-top: 13rem;
+     margin-top: 130px;
 }
 
 .control .line
 {
-      width: 25rem;
-      height: 0.4rem;
+      width: 250px;
+      height: 4px;
       background: #fff;
-      margin: 0 2rem;
-      border-radius: 0.2rem;
+      margin: 0 20px;
+      border-radius: 2px;
 }
 
 .control .line span
 {
      width: 60%;
-     height: 0.8rem;
-     margin-top: -0.2rem;
-     border-radius: 0.4rem;
+     height: 8px;
+     margin-top: -2px;
+     border-radius: 4px;
      background:#00986f;
      display: block;
-}*/
-@media (max-width: 998rem)
-{
-    html{
-        font-size: 55%;
-    }
 }
-@media (max-width: 768rem)
+@media only screen and (min-width: 1000px)
 {
-    html{
-        font-size: 55%;
-    }
+    nav .menu-img
+{
+      width: 10%;
+      display: block;
+      padding-left:10%;
+}
 }
