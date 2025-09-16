@@ -1048,15 +1048,711 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="section">
-            <div class="section-placeholder">
-                <span class="coming-soon">Ready for Integration</span>
-                <h2 class="section-title">Project Showcase</h2>
+     <!-- .project-problem p,
+        .project-solution p {
+            color: #4b5563;
+        }<!DOCTYPE html> -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-description {
+            font-size: 1.25rem;
+            color: #64748b;
+            max-width: 768px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 3rem;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+            display: flex;
+            gap: 2.5rem;
+            align-items: flex-start;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideInUp 0.6s ease forwards;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-bottom: 2rem;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.15);
+            border-color: #2563eb;
+        }
+
+        .project-image {
+            width: 300px;
+            height: 200px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .project-content {
+            flex: 1;
+        }
+
+        .project-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .project-description {
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .project-problem,
+        .project-solution {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-problem h4,
+        .project-solution h4 {
+            color: #2563eb;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-results {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-results h4 {
+            color: #10b981;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .results-list {
+            list-style: none;
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .results-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4b5563;
+        }
+
+        .results-list li::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .project-technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(37, 99, 235, 0.1);
+            color: #2563eb;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+
+        .project-metrics {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .metric {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .metric-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-description {
+            color: #64748b;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .button-primary {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .button-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.3);
+        }
+
+        .button-outline {
+            background: transparent;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+        }
+
+        .button-outline:hover {
+            background: #2563eb;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hidden-projects {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease;
+        }
+
+        .hidden-projects.show {
+            max-height: 2000px;
+        }
+
+        .slide-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-card:nth-child(5) { animation-delay: 0.5s; }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .project-card {
+                flex-direction: column;
+                padding: 2rem;
+            }
+            
+            .project-image {
+                width: 100%;
+                height: 200px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .project-metrics {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
                 <p class="section-description">
-                    This section will display your portfolio projects. Please provide the ProjectShowcase component code to complete the integration.
+                    Solving complex problems with data-driven solutions. Each project showcases measurable impact 
+                    and demonstrates expertise across the full technology stack.
                 </p>
             </div>
-        </section>
+            
+            <div class="projects-grid">
+                <!-- Main Projects -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <span>AI Data Pipeline</span>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI-Powered Data Pipeline Optimization</h3>
+                        <p class="project-description">
+                            Redesigned and optimized a legacy data processing system for a Fortune 500 company, 
+                            implementing advanced ML algorithms and automated workflows.
+                        </p>
+                        
+                        <div class="project-problem">
+                            <h4>Problem</h4>
+                            <p>The existing data pipeline was processing 10TB of daily data with significant delays, 
+                            taking 8+ hours per batch and causing downstream analytics delays that impacted business decisions.</p>
+                        </div>
+                        
+                        <div class="project-solution">
+                            <h4>Solution</h4>
+                            <p>Implemented Apache Spark with optimized partitioning strategies, introduced ML-based anomaly 
+                            detection for data quality, and built automated monitoring with real-time alerting systems.</p>
+                        </div>
+                        
+                        <div class="project-results">
+                            <h4>Results</h4>
+                            <ul class="results-list">
+                                <li>Reduced processing time from 8 hours to 3 hours (62.5% improvement)</li>
+                                <li>Improved data quality scores by 35% through ML-based validation</li>
+                                <li>Decreased infrastructure costs by $50K annually</li>
+                                <li>Enabled real-time analytics for critical business metrics</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project-technologies">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Apache Spark</span>
+                            <span class="tech-tag">MLflow</span>
+                            <span class="tech-tag">Apache Airflow</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                        
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <i data-lucide="clock" class="metric-icon"></i>
+                                <span>Processing Time Reduced: 62.5%</span>
+                            </div>
+                            <div class="metric">
+                                <i data-lucide="trending-up" class="metric-icon"></i>
+                                <span>Annual Cost Savings: $50K</span>
+                            </div>
+                            <div class="metric">
+                                <i data-lucide="target" class="metric-icon"></i>
+                                <span>Data Quality Improvement: 35%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <span>Testing Framework</span>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Automated Testing Framework</h3>
+                        <p class="project-description">
+                            Built a comprehensive testing framework for a fintech startup, implementing automated validation 
+                            for ML models and data pipelines with CI/CD integration.
+                        </p>
+                        
+                        <div class="project-problem">
+                            <h4>Problem</h4>
+                            <p>Manual testing processes were consuming 40% of development time, with inconsistent validation 
+                            methods leading to production bugs and delayed releases.</p>
+                        </div>
+                        
+                        <div class="project-solution">
+                            <h4>Solution</h4>
+                            <p>Developed a custom testing framework with automated data validation, ML model performance 
+                            monitoring, and integrated CI/CD pipelines with comprehensive reporting dashboards.</p>
+                        </div>
+                        
+                        <div class="project-results">
+                            <h4>Results</h4>
+                            <ul class="results-list">
+                                <li>Reduced manual testing time by 75%</li>
+                                <li>Achieved 95% code coverage across all critical systems</li>
+                                <li>Decreased production bugs by 80%</li>
+                                <li>Accelerated release cycles from bi-weekly to weekly</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project-technologies">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Pytest</span>
+                            <span class="tech-tag">Jenkins</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Grafana</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                        
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <i data-lucide="clock" class="metric-icon"></i>
+                                <span>Testing Time Reduced: 75%</span>
+                            </div>
+                            <div class="metric">
+                                <i data-lucide="target" class="metric-icon"></i>
+                                <span>Code Coverage: 95%</span>
+                            </div>
+                            <div class="metric">
+                                <i data-lucide="award" class="metric-icon"></i>
+                                <span>Production Bugs Reduced: 80%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <span>Analytics Dashboard</span>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Real-Time Analytics Dashboard</h3>
+                        <p class="project-description">
+                            Created an interactive analytics platform for an e-commerce company, providing real-time insights 
+                            into customer behavior and business performance.
+                        </p>
+                        
+                        <div class="project-problem">
+                            <h4>Problem</h4>
+                            <p>Business stakeholders lacked real-time visibility into key metrics, relying on static weekly 
+                            reports that made rapid decision-making impossible during peak sales periods.</p>
+                        </div>
+                        
+                        <div class="project-solution">
+                            <h4>Solution</h4>
+                            <p>Built a React-based dashboard with real-time data streaming, interactive visualizations, 
+                            and customizable KPI tracking with automated alert systems for threshold breaches.</p>
+                        </div>
+                        
+                        <div class="project-results">
+                            <h4>Results</h4>
+                            <ul class="results-list">
+                                <li>Enabled real-time decision making for 50+ stakeholders</li>
+                                <li>Increased sales conversion by 15% through data-driven insights</li>
+                                <li>Reduced reporting overhead by 60%</li>
+                                <li>Improved customer retention by 12% through behavior analysis</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project-technologies">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">WebSocket</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Tableau</span>
+                        </div>
+                        
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <i data-lucide="trending-up" class="metric-icon"></i>
+                                <span>Sales Conversion Increase: 15%</span>
+                            </div>
+                            <div class="metric">
+                                <i data-lucide="users" class="metric-icon"></i>
+                                <span>Stakeholders Served: 50+</span>
+                            </div>
+                            <div class="metric">
+                                <i data-lucide="zap" class="metric-icon"></i>
+                                <span>Reporting Time Saved: 60%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hidden Additional Projects -->
+                <div class="hidden-projects" id="hiddenProjects">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <span>Microservices Platform</span>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Cloud-Native Microservices Platform</h3>
+                            <p class="project-description">
+                                Architected and deployed a scalable microservices platform for a healthcare startup, 
+                                enabling rapid feature development and seamless scaling.
+                            </p>
+                            
+                            <div class="project-problem">
+                                <h4>Problem</h4>
+                                <p>Monolithic architecture was limiting development speed and causing system-wide outages 
+                                when individual components failed, affecting patient care workflows.</p>
+                            </div>
+                            
+                            <div class="project-solution">
+                                <h4>Solution</h4>
+                                <p>Designed cloud-native microservices with Kubernetes orchestration, implemented service mesh 
+                                for security and observability, and established comprehensive monitoring and alerting.</p>
+                            </div>
+                            
+                            <div class="project-results">
+                                <h4>Results</h4>
+                                <ul class="results-list">
+                                    <li>Achieved 99.9% system uptime with fault isolation</li>
+                                    <li>Reduced deployment time from 2 hours to 15 minutes</li>
+                                    <li>Enabled independent team scaling across 5 development teams</li>
+                                    <li>Improved system response time by 45%</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="project-technologies">
+                                <span class="tech-tag">Kubernetes</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">Go</span>
+                                <span class="tech-tag">Istio</span>
+                                <span class="tech-tag">Prometheus</span>
+                                <span class="tech-tag">Helm</span>
+                                <span class="tech-tag">GitOps</span>
+                            </div>
+                            
+                            <div class="project-metrics">
+                                <div class="metric">
+                                    <i data-lucide="shield" class="metric-icon"></i>
+                                    <span>System Uptime: 99.9%</span>
+                                </div>
+                                <div class="metric">
+                                    <i data-lucide="clock" class="metric-icon"></i>
+                                    <span>Deployment Time: -87%</span>
+                                </div>
+                                <div class="metric">
+                                    <i data-lucide="zap" class="metric-icon"></i>
+                                    <span>Response Time: +45%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <span>ML Recommendation Engine</span>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Intelligent Recommendation Engine</h3>
+                            <p class="project-description">
+                                Developed an advanced ML recommendation system for a streaming platform, implementing 
+                                collaborative filtering and deep learning models to personalize user experiences.
+                            </p>
+                            
+                            <div class="project-problem">
+                                <h4>Problem</h4>
+                                <p>Users were experiencing poor content discovery with only 12% engagement rate on recommended 
+                                content, leading to increased churn and reduced viewing time.</p>
+                            </div>
+                            
+                            <div class="project-solution">
+                                <h4>Solution</h4>
+                                <p>Implemented hybrid recommendation system combining collaborative filtering, content-based 
+                                filtering, and neural networks with real-time A/B testing framework for continuous optimization.</p>
+                            </div>
+                            
+                            <div class="project-results">
+                                <h4>Results</h4>
+                                <ul class="results-list">
+                                    <li>Increased recommendation engagement by 180% (12% to 33.6%)</li>
+                                    <li>Extended average viewing sessions by 25 minutes</li>
+                                    <li>Reduced user churn rate by 22%</li>
+                                    <li>Generated $2.5M additional revenue through improved retention</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="project-technologies">
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">PyTorch</span>
+                                <span class="tech-tag">Apache Kafka</span>
+                                <span class="tech-tag">Redis</span>
+                                <span class="tech-tag">Spark</span>
+                                <span class="tech-tag">MLOps</span>
+                                <span class="tech-tag">A/B Testing</span>
+                            </div>
+                            
+                            <div class="project-metrics">
+                                <div class="metric">
+                                    <i data-lucide="trending-up" class="metric-icon"></i>
+                                    <span>Engagement: +180%</span>
+                                </div>
+                                <div class="metric">
+                                    <i data-lucide="users" class="metric-icon"></i>
+                                    <span>Churn Reduction: 22%</span>
+                                </div>
+                                <div class="metric">
+                                    <i data-lucide="dollar-sign" class="metric-icon"></i>
+                                    <span>Revenue Impact: $2.5M</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <p class="cta-description">
+                    Want to see more projects and detailed case studies?
+                </p>
+                <div class="button-group">
+                    <button class="button button-primary" id="viewPortfolioBtn">
+                        <span>View Complete Portfolio</span>
+                        <span class="slide-indicator">
+                            <i data-lucide="chevron-down"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Handle portfolio expansion
+        const viewPortfolioBtn = document.getElementById('viewPortfolioBtn');
+        const hiddenProjects = document.getElementById('hiddenProjects');
+        const slideIndicator = document.querySelector('.slide-indicator');
+        let isExpanded = false;
+        
+        viewPortfolioBtn.addEventListener('click', () => {
+            if (!isExpanded) {
+                hiddenProjects.classList.add('show');
+                slideIndicator.classList.add('rotate-180');
+                viewPortfolioBtn.querySelector('span').textContent = 'Show Less Projects';
+                isExpanded = true;
+                
+                // Smooth scroll to new content
+                setTimeout(() => {
+                    hiddenProjects.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }, 300);
+            } else {
+                hiddenProjects.classList.remove('show');
+                slideIndicator.classList.remove('rotate-180');
+                viewPortfolioBtn.querySelector('span').textContent = 'View Complete Portfolio';
+                isExpanded = false;
+            }
+        });
+        
+        // Add scroll animations for project cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Add hover effects for better interactivity
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html> 
 
 
         <!-- Contact Section -->
