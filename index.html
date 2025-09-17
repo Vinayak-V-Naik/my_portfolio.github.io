@@ -1,491 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <script>
-        (function () {
-            emailjs.init("AoFvxHU4X61abgGtg"); // replace with your Public Key
-        })();
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            scroll-behavior: smooth;
-        }
-
-        /* Navigation Styles */
-        .navigation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid #e5e7eb;
-            z-index: 50;
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .nav-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 64px;
-        }
-
-        .nav-logo {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #1a1a1a;
-            text-decoration: none;
-        }
-
-        .nav-desktop {
-            display: none;
-            align-items: center;
-            gap: 32px;
-        }
-
-        .nav-button {
-            background: none;
-            border: none;
-            color: #64748b;
-            cursor: pointer;
-            transition: color 0.3s ease;
-            font-size: 1rem;
-            padding: 0;
-        }
-
-        .nav-button:hover {
-            color: #1a1a1a;
-        }
-
-        .nav-resume-btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 8px 16px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            background: transparent;
-            color: #374151;
-            font-size: 0.875rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .nav-resume-btn:hover {
-            background: #f9fafb;
-            border-color: #9ca3af;
-        }
-
-        .nav-resume-icon {
-            width: 16px;
-            height: 16px;
-            margin-right: 8px;
-        }
-
-        .mobile-menu-toggle {
-            display: block;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-            color: #64748b;
-            transition: color 0.3s ease;
-        }
-
-        .mobile-menu-toggle:hover {
-            color: #1a1a1a;
-        }
-
-        .mobile-menu-icon {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* Mobile Navigation */
-        .nav-mobile {
-            display: none;
-            padding: 16px 0;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .nav-mobile.active {
-            display: block;
-        }
-
-        .nav-mobile-content {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .nav-mobile-button {
-            background: none;
-            border: none;
-            color: #64748b;
-            cursor: pointer;
-            transition: color 0.3s ease;
-            font-size: 1rem;
-            padding: 0;
-            text-align: left;
-        }
-
-        .nav-mobile-button:hover {
-            color: #1a1a1a;
-        }
-
-        .nav-mobile-resume {
-            width: fit-content;
-        }
-
-        /* Desktop Navigation */
-        @media (min-width: 768px) {
-            .nav-desktop {
-                display: flex;
-            }
-
-            .mobile-menu-toggle {
-                display: none;
-            }
-        }
-
-        /* Hero Section */
-        .hero-section {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-            padding-top: 64px;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
-        }
-
-        .content {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-
-        .content-text {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #1a1a1a;
-            line-height: 1.1;
-        }
-
-        .hero-accent {
-            color: #3b82f6;
-            display: block;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: #64748b;
-            line-height: 1.75;
-            max-width: 512px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 32px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            text-decoration: none;
-        }
-
-        .button-hero {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            color: white;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-        }
-
-        .button-hero:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
-        }
-
-        .button-outline {
-            background: transparent;
-            border: 2px solid #d1d5db;
-            color: #374151;
-        }
-
-        .button-outline:hover {
-            background: #f9fafb;
-            border-color: #9ca3af;
-            transform: translateY(-1px);
-        }
-
-        .button-icon {
-            margin-left: 8px;
-            width: 20px;
-            height: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .button-hero:hover .button-icon-download {
-            transform: translateY(2px);
-        }
-
-        .button-outline:hover .button-icon-arrow {
-            transform: translateX(4px);
-        }
-
-        .social-proof {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            padding-top: 16px;
-        }
-
-        .status-indicator {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: #22c55e;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .status-text, .projects-text {
-            font-size: 0.875rem;
-            color: #64748b;
-        }
-
-        .projects-count {
-            font-weight: 600;
-            color: #1a1a1a;
-        }
-
-        .hero-image-container {
-            position: relative;
-        }
-
-        .hero-image-wrapper {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-
-        .hero-image {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            display: block;
-        }
-
-        .hero-image-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(59, 130, 246, 0.2), transparent);
-        }
-
-        .floating-card {
-            position: absolute;
-            background: white;
-            padding: 16px;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            border: 1px solid #e5e7eb;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .floating-card-bottom {
-            bottom: -24px;
-            left: -24px;
-        }
-
-        .floating-card-top {
-            top: -24px;
-            right: -24px;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .card-value {
-            font-size: 1.5rem;
-            font-weight: bold;
-            line-height: 1;
-        }
-
-        .card-value-success {
-            color: #22c55e;
-        }
-
-        .card-value-accent {
-            color: #3b82f6;
-        }
-
-        .card-label {
-            font-size: 0.875rem;
-            color: #64748b;
-            margin-top: 4px;
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-placeholder {
-            background: #f8fafc;
-            text-align: center;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #1a1a1a;
-            margin-bottom: 16px;
-        }
-
-        .section-description {
-            font-size: 1.125rem;
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .coming-soon {
-            display: inline-block;
-            background: #fef3c7;
-            color: #d97706;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            margin-bottom: 24px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (min-width: 640px) {
-            .cta-buttons {
-                flex-direction: row;
-            }
-            
-            .hero-title {
-                font-size: 3.75rem;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.125rem;
-            }
-            
-            .social-proof {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-            
-            .floating-card-bottom {
-                bottom: -12px;
-                left: -12px;
-            }
-            
-            .floating-card-top {
-                top: -12px;
-                right: -12px;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <title>Vinayak Naik - Professional Portfolio</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <!-- External Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -547,7 +72,7 @@
         </div>
     </nav>
 
-    <main style="min-height: 100vh;">
+    <main>
         <!-- Hero Section -->
         <section id="hero" class="hero-section">
             <div class="hero-overlay"></div>
@@ -596,7 +121,7 @@
                     <div class="hero-image-container">
                         <div class="hero-image-wrapper">
                             <img 
-                                src="assets/Images/img.jpg" 
+                                src="assets/images/profile.jpg" 
                                 alt="Professional workspace showcasing development environment"
                                 class="hero-image"
                             />
@@ -619,1476 +144,565 @@
         </section>
 
         <!-- About Section -->
-        <section id="about" class="section">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Section</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background: #ffffff;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .section {
-            padding: 80px 0;
-            background: rgba(241, 245, 249, 0.3);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-
-        .section-title {
-            font-size: 2.25rem;
-            font-weight: bold;
-            color: #1a1a1a;
-            margin-bottom: 16px;
-        }
-
-        .section-subtitle {
-            font-size: 1.25rem;
-            color: #64748b;
-            max-width: 768px;
-            margin: 0 auto;
-        }
-
-        .grid {
-            display: grid;
-            gap: 32px;
-            margin-bottom: 64px;
-        }
-
-        .grid-3 {
-            grid-template-columns: 2fr 1fr;
-        }
-
-        .grid-2 {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            padding: 24px;
-            border: none;
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .icon {
-            width: 24px;
-            height: 24px;
-            margin-right: 12px;
-            color: #3b82f6;
-        }
-
-        .card-title {
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .section-heading {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-        }
-
-        .badge-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .badge {
-            background: #f1f5f9;
-            color: #475569;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        .achievement-card {
-            margin-bottom: 16px;
-        }
-
-        .achievement-content {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-        }
-
-        .achievement-icon {
-            padding: 8px;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 8px;
-        }
-
-        .achievement-details {
-            flex: 1;
-        }
-
-        .achievement-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 4px;
-        }
-
-        .achievement-title {
-            font-weight: 600;
-        }
-
-        .achievement-year {
-            font-size: 0.875rem;
-            color: #3b82f6;
-            font-weight: 500;
-        }
-
-        .achievement-description {
-            font-size: 0.875rem;
-            color: #64748b;
-        }
-
-        .personal-statement {
-            background: linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(34, 197, 94, 0.05));
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            padding: 32px;
-            text-align: center;
-        }
-
-        .statement-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        .statement-text {
-            font-size: 1.125rem;
-            color: #64748b;
-            line-height: 1.75;
-            max-width: 768px;
-            margin: 0 auto;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 64px;
-            margin-top: 32px;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 1.875rem;
-            font-weight: bold;
-            color: #3b82f6;
-        }
-
-        .stat-number.success {
-            color: #22c55e;
-        }
-
-        .stat-number.primary {
-            color: #8b5cf6;
-        }
-
-        .stat-label {
-            font-size: 0.875rem;
-            color: #64748b;
-        }
-
-        @media (max-width: 1024px) {
-            .grid-3 {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-            
-            .section-title {
-                font-size: 1.875rem;
-            }
-            
-            .stats {
-                gap: 32px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <section class="section">
-        <div class="container">
-            <!-- Section Header -->
-            <div class="section-header">
-                <h2 class="section-title">
-                    Expertise That Delivers Results
-                </h2>
-                <p class="section-subtitle">
-                    I specialize in validating, optimizing, and delivering high-quality solutions 
-                    that solve real business problems with measurable impact.
-                </p>
-            </div>
-
-            <div class="grid grid-3">
-                <!-- Skills Section -->
-                <div>
-                    <h3 class="section-heading">Technical Skills</h3>
-                    <div class="grid grid-2">
-                        <!-- Languages -->
-                        <div class="card">
-                            <div class="card-header">
-                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-                                </svg>
-                                <h4 class="card-title">Languages</h4>
-                            </div>
-                            <div class="badge-container">
-                                <span class="badge">Python</span>
-                                <span class="badge">JavaScript</span>
-                                <span class="badge">TypeScript</span>
-                                <span class="badge">SQL</span>
-                                <span class="badge">R</span>
-                            </div>
-                        </div>
-
-                        <!-- ML/AI -->
-                        <div class="card">
-                            <div class="card-header">
-                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                                </svg>
-                                <h4 class="card-title">ML/AI</h4>
-                            </div>
-                            <div class="badge-container">
-                                <span class="badge">TensorFlow</span>
-                                <span class="badge">PyTorch</span>
-                                <span class="badge">Scikit-learn</span>
-                                <span class="badge">OpenAI API</span>
-                                <span class="badge">Hugging Face</span>
-                            </div>
-                        </div>
-
-                        <!-- Data Engineering -->
-                        <div class="card">
-                            <div class="card-header">
-                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
-                                </svg>
-                                <h4 class="card-title">Data Engineering</h4>
-                            </div>
-                            <div class="badge-container">
-                                <span class="badge">Apache Kafka</span>
-                                <span class="badge">PostgreSQL</span>
-                                <span class="badge">MongoDB</span>
-                                <span class="badge">Redis</span>
-                                <span class="badge">Elasticsearch</span>
-                            </div>
-                        </div>
-
-                        <!-- Cloud & DevOps -->
-                        <div class="card">
-                            <div class="card-header">
-                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"/>
-                                </svg>
-                                <h4 class="card-title">Cloud & DevOps</h4>
-                            </div>
-                            <div class="badge-container">
-                                <span class="badge">AWS</span>
-                                <span class="badge">Docker</span>
-                                <span class="badge">Kubernetes</span>
-                                <span class="badge">CI/CD</span>
-                                <span class="badge">Terraform</span>
-                            </div>
-                        </div>
-
-                        <!-- Development -->
-                        <div class="card">
-                            <div class="card-header">
-                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                                </svg>
-                                <h4 class="card-title">Development</h4>
-                            </div>
-                            <div class="badge-container">
-                                <span class="badge">React</span>
-                                <span class="badge">Node.js</span>
-                                <span class="badge">FastAPI</span>
-                                <span class="badge">Git</span>
-                                <span class="badge">Testing Frameworks</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Achievements Section -->
-                <div>
-                    <h3 class="section-heading">Recognition</h3>
-                    <div>
-                        <!-- Top Performer Award -->
-                        <div class="card achievement-card">
-                            <div class="achievement-content">
-                                <div class="achievement-icon">
-                                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-                                    </svg>
-                                </div>
-                                <div class="achievement-details">
-                                    <div class="achievement-header">
-                                        <h4 class="achievement-title">Top Performer Award</h4>
-                                        <span class="achievement-year">2024</span>
-                                    </div>
-                                    <p class="achievement-description">Recognized for delivering 3 critical projects ahead of schedule</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MS Computer Science -->
-                        <div class="card achievement-card">
-                            <div class="achievement-content">
-                                <div class="achievement-icon">
-                                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
-                                    </svg>
-                                </div>
-                                <div class="achievement-details">
-                                    <div class="achievement-header">
-                                        <h4 class="achievement-title">MS Computer Science</h4>
-                                        <span class="achievement-year">2023</span>
-                                    </div>
-                                    <p class="achievement-description">Specialization in Machine Learning and Data Systems</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Senior Engineer Promotion -->
-                        <div class="card achievement-card">
-                            <div class="achievement-content">
-                                <div class="achievement-icon">
-                                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6m8 0H8m0 0h-.01M8 6h-.01"/>
-                                    </svg>
-                                </div>
-                                <div class="achievement-details">
-                                    <div class="achievement-header">
-                                        <h4 class="achievement-title">Senior Engineer Promotion</h4>
-                                        <span class="achievement-year">2023</span>
-                                    </div>
-                                    <p class="achievement-description">Fast-tracked promotion based on project impact and leadership</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Personal Statement -->
-            <div class="personal-statement">
-                <div>
-                    <h3 class="statement-title">My Approach</h3>
-                    <p class="statement-text">
-                        I believe in building solutions that not only work but create lasting value. 
-                        Every project starts with understanding the real problem, validating assumptions, 
-                        and delivering measurable outcomes that move the business forward.
-                    </p>
-                    <div class="stats">
-                        <div class="stat">
-                            <div class="stat-number">3+</div>
-                            <div class="stat-label">Years Experience</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number success">15+</div>
-                            <div class="stat-label">Projects Completed</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number primary">98%</div>
-                            <div class="stat-label">Client Satisfaction</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</body>
-</html>
-        </section>
-
-        <!-- Projects Section -->
-     <!-- .project-problem p,
-        .project-solution p {
-            color: #4b5563;
-        }<!DOCTYPE html> -->
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects Portfolio</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #ffffff;
-            color: #1a1a1a;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section {
-            padding: 5rem 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .section-description {
-            font-size: 1.25rem;
-            color: #64748b;
-            max-width: 768px;
-            margin: 0 auto;
-        }
-
-        .projects-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 5rem;
-        }
-
-        .project-card {
-            background: #ffffff;
-            border-radius: 24px;
-            padding: 3rem;
-            border: 2px solid #e5e7eb;
-            transition: all 0.3s ease;
-            display: flex;
-            gap: 2.5rem;
-            align-items: flex-start;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: slideInUp 0.6s ease forwards;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            margin-bottom: 2rem;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.15);
-            border-color: #2563eb;
-        }
-
-        .project-image {
-            width: 300px;
-            height: 200px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 600;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-
-        .project-content {
-            flex: 1;
-        }
-
-        .project-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #1f2937;
-        }
-
-        .project-description {
-            color: #4b5563;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .project-problem,
-        .project-solution {
-            margin-bottom: 1.5rem;
-        }
-
-        .project-problem h4,
-        .project-solution h4 {
-            color: #2563eb;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-results {
-            margin-bottom: 1.5rem;
-        }
-
-        .project-results h4 {
-            color: #10b981;
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .results-list {
-            list-style: none;
-            display: grid;
-            gap: 0.5rem;
-        }
-
-        .results-list li {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #4b5563;
-        }
-
-        .results-list li::before {
-            content: "✓";
-            color: #10b981;
-            font-weight: bold;
-        }
-
-        .project-technologies {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-tag {
-            background: rgba(37, 99, 235, 0.1);
-            color: #2563eb;
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            border: 1px solid rgba(37, 99, 235, 0.2);
-        }
-
-        .project-metrics {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .metric {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #10b981;
-            font-weight: 600;
-        }
-
-        .metric-icon {
-            width: 20px;
-            height: 20px;
-        }
-
-        .cta-section {
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        .cta-description {
-            color: #64748b;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .button {
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .button-primary {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-        }
-
-        .button-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.3);
-        }
-
-        .button-outline {
-            background: transparent;
-            color: #2563eb;
-            border: 2px solid #2563eb;
-        }
-
-        .button-outline:hover {
-            background: #2563eb;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .hidden-projects {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.6s ease;
-        }
-
-        .hidden-projects.show {
-            max-height: 2000px;
-        }
-
-        .slide-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-left: 0.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .rotate-180 {
-            transform: rotate(180deg);
-        }
-
-        @keyframes slideInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .project-card:nth-child(1) { animation-delay: 0.1s; }
-        .project-card:nth-child(2) { animation-delay: 0.2s; }
-        .project-card:nth-child(3) { animation-delay: 0.3s; }
-        .project-card:nth-child(4) { animation-delay: 0.4s; }
-        .project-card:nth-child(5) { animation-delay: 0.5s; }
-
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 2.5rem;
-            }
-            
-            .project-card {
-                flex-direction: column;
-                padding: 2rem;
-            }
-            
-            .project-image {
-                width: 100%;
-                height: 200px;
-            }
-            
-            .button-group {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .project-metrics {
-                justify-content: center;
-            }
-        }
-    </style>
-</head>
-<body>
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-description">
-                    Solving complex problems with data-driven solutions. Each project showcases measurable impact 
-                    and demonstrates expertise across the full technology stack.
-                </p>
-            </div>
-            
-            <div class="projects-grid">
-                <!-- Main Projects -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <span>AI Data Pipeline</span>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">AI-Powered Data Pipeline Optimization</h3>
-                        <p class="project-description">
-                            Redesigned and optimized a legacy data processing system for a Fortune 500 company, 
-                            implementing advanced ML algorithms and automated workflows.
-                        </p>
-                        
-                        <div class="project-problem">
-                            <h4>Problem</h4>
-                            <p>The existing data pipeline was processing 10TB of daily data with significant delays, 
-                            taking 8+ hours per batch and causing downstream analytics delays that impacted business decisions.</p>
-                        </div>
-                        
-                        <div class="project-solution">
-                            <h4>Solution</h4>
-                            <p>Implemented Apache Spark with optimized partitioning strategies, introduced ML-based anomaly 
-                            detection for data quality, and built automated monitoring with real-time alerting systems.</p>
-                        </div>
-                        
-                        <div class="project-results">
-                            <h4>Results</h4>
-                            <ul class="results-list">
-                                <li>Reduced processing time from 8 hours to 3 hours (62.5% improvement)</li>
-                                <li>Improved data quality scores by 35% through ML-based validation</li>
-                                <li>Decreased infrastructure costs by $50K annually</li>
-                                <li>Enabled real-time analytics for critical business metrics</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="project-technologies">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Apache Spark</span>
-                            <span class="tech-tag">MLflow</span>
-                            <span class="tech-tag">Apache Airflow</span>
-                            <span class="tech-tag">AWS</span>
-                            <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                        </div>
-                        
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <i data-lucide="clock" class="metric-icon"></i>
-                                <span>Processing Time Reduced: 62.5%</span>
-                            </div>
-                            <div class="metric">
-                                <i data-lucide="trending-up" class="metric-icon"></i>
-                                <span>Annual Cost Savings: $50K</span>
-                            </div>
-                            <div class="metric">
-                                <i data-lucide="target" class="metric-icon"></i>
-                                <span>Data Quality Improvement: 35%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <span>Testing Framework</span>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Automated Testing Framework</h3>
-                        <p class="project-description">
-                            Built a comprehensive testing framework for a fintech startup, implementing automated validation 
-                            for ML models and data pipelines with CI/CD integration.
-                        </p>
-                        
-                        <div class="project-problem">
-                            <h4>Problem</h4>
-                            <p>Manual testing processes were consuming 40% of development time, with inconsistent validation 
-                            methods leading to production bugs and delayed releases.</p>
-                        </div>
-                        
-                        <div class="project-solution">
-                            <h4>Solution</h4>
-                            <p>Developed a custom testing framework with automated data validation, ML model performance 
-                            monitoring, and integrated CI/CD pipelines with comprehensive reporting dashboards.</p>
-                        </div>
-                        
-                        <div class="project-results">
-                            <h4>Results</h4>
-                            <ul class="results-list">
-                                <li>Reduced manual testing time by 75%</li>
-                                <li>Achieved 95% code coverage across all critical systems</li>
-                                <li>Decreased production bugs by 80%</li>
-                                <li>Accelerated release cycles from bi-weekly to weekly</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="project-technologies">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Pytest</span>
-                            <span class="tech-tag">Jenkins</span>
-                            <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">Grafana</span>
-                            <span class="tech-tag">FastAPI</span>
-                            <span class="tech-tag">MongoDB</span>
-                        </div>
-                        
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <i data-lucide="clock" class="metric-icon"></i>
-                                <span>Testing Time Reduced: 75%</span>
-                            </div>
-                            <div class="metric">
-                                <i data-lucide="target" class="metric-icon"></i>
-                                <span>Code Coverage: 95%</span>
-                            </div>
-                            <div class="metric">
-                                <i data-lucide="award" class="metric-icon"></i>
-                                <span>Production Bugs Reduced: 80%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <span>Analytics Dashboard</span>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Real-Time Analytics Dashboard</h3>
-                        <p class="project-description">
-                            Created an interactive analytics platform for an e-commerce company, providing real-time insights 
-                            into customer behavior and business performance.
-                        </p>
-                        
-                        <div class="project-problem">
-                            <h4>Problem</h4>
-                            <p>Business stakeholders lacked real-time visibility into key metrics, relying on static weekly 
-                            reports that made rapid decision-making impossible during peak sales periods.</p>
-                        </div>
-                        
-                        <div class="project-solution">
-                            <h4>Solution</h4>
-                            <p>Built a React-based dashboard with real-time data streaming, interactive visualizations, 
-                            and customizable KPI tracking with automated alert systems for threshold breaches.</p>
-                        </div>
-                        
-                        <div class="project-results">
-                            <h4>Results</h4>
-                            <ul class="results-list">
-                                <li>Enabled real-time decision making for 50+ stakeholders</li>
-                                <li>Increased sales conversion by 15% through data-driven insights</li>
-                                <li>Reduced reporting overhead by 60%</li>
-                                <li>Improved customer retention by 12% through behavior analysis</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="project-technologies">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">D3.js</span>
-                            <span class="tech-tag">WebSocket</span>
-                            <span class="tech-tag">Redis</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Tableau</span>
-                        </div>
-                        
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <i data-lucide="trending-up" class="metric-icon"></i>
-                                <span>Sales Conversion Increase: 15%</span>
-                            </div>
-                            <div class="metric">
-                                <i data-lucide="users" class="metric-icon"></i>
-                                <span>Stakeholders Served: 50+</span>
-                            </div>
-                            <div class="metric">
-                                <i data-lucide="zap" class="metric-icon"></i>
-                                <span>Reporting Time Saved: 60%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hidden Additional Projects -->
-                <div class="hidden-projects" id="hiddenProjects">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <span>Microservices Platform</span>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Cloud-Native Microservices Platform</h3>
-                            <p class="project-description">
-                                Architected and deployed a scalable microservices platform for a healthcare startup, 
-                                enabling rapid feature development and seamless scaling.
-                            </p>
-                            
-                            <div class="project-problem">
-                                <h4>Problem</h4>
-                                <p>Monolithic architecture was limiting development speed and causing system-wide outages 
-                                when individual components failed, affecting patient care workflows.</p>
-                            </div>
-                            
-                            <div class="project-solution">
-                                <h4>Solution</h4>
-                                <p>Designed cloud-native microservices with Kubernetes orchestration, implemented service mesh 
-                                for security and observability, and established comprehensive monitoring and alerting.</p>
-                            </div>
-                            
-                            <div class="project-results">
-                                <h4>Results</h4>
-                                <ul class="results-list">
-                                    <li>Achieved 99.9% system uptime with fault isolation</li>
-                                    <li>Reduced deployment time from 2 hours to 15 minutes</li>
-                                    <li>Enabled independent team scaling across 5 development teams</li>
-                                    <li>Improved system response time by 45%</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="project-technologies">
-                                <span class="tech-tag">Kubernetes</span>
-                                <span class="tech-tag">Docker</span>
-                                <span class="tech-tag">Go</span>
-                                <span class="tech-tag">Istio</span>
-                                <span class="tech-tag">Prometheus</span>
-                                <span class="tech-tag">Helm</span>
-                                <span class="tech-tag">GitOps</span>
-                            </div>
-                            
-                            <div class="project-metrics">
-                                <div class="metric">
-                                    <i data-lucide="shield" class="metric-icon"></i>
-                                    <span>System Uptime: 99.9%</span>
-                                </div>
-                                <div class="metric">
-                                    <i data-lucide="clock" class="metric-icon"></i>
-                                    <span>Deployment Time: -87%</span>
-                                </div>
-                                <div class="metric">
-                                    <i data-lucide="zap" class="metric-icon"></i>
-                                    <span>Response Time: +45%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image">
-                            <span>ML Recommendation Engine</span>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Intelligent Recommendation Engine</h3>
-                            <p class="project-description">
-                                Developed an advanced ML recommendation system for a streaming platform, implementing 
-                                collaborative filtering and deep learning models to personalize user experiences.
-                            </p>
-                            
-                            <div class="project-problem">
-                                <h4>Problem</h4>
-                                <p>Users were experiencing poor content discovery with only 12% engagement rate on recommended 
-                                content, leading to increased churn and reduced viewing time.</p>
-                            </div>
-                            
-                            <div class="project-solution">
-                                <h4>Solution</h4>
-                                <p>Implemented hybrid recommendation system combining collaborative filtering, content-based 
-                                filtering, and neural networks with real-time A/B testing framework for continuous optimization.</p>
-                            </div>
-                            
-                            <div class="project-results">
-                                <h4>Results</h4>
-                                <ul class="results-list">
-                                    <li>Increased recommendation engagement by 180% (12% to 33.6%)</li>
-                                    <li>Extended average viewing sessions by 25 minutes</li>
-                                    <li>Reduced user churn rate by 22%</li>
-                                    <li>Generated $2.5M additional revenue through improved retention</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="project-technologies">
-                                <span class="tech-tag">TensorFlow</span>
-                                <span class="tech-tag">PyTorch</span>
-                                <span class="tech-tag">Apache Kafka</span>
-                                <span class="tech-tag">Redis</span>
-                                <span class="tech-tag">Spark</span>
-                                <span class="tech-tag">MLOps</span>
-                                <span class="tech-tag">A/B Testing</span>
-                            </div>
-                            
-                            <div class="project-metrics">
-                                <div class="metric">
-                                    <i data-lucide="trending-up" class="metric-icon"></i>
-                                    <span>Engagement: +180%</span>
-                                </div>
-                                <div class="metric">
-                                    <i data-lucide="users" class="metric-icon"></i>
-                                    <span>Churn Reduction: 22%</span>
-                                </div>
-                                <div class="metric">
-                                    <i data-lucide="dollar-sign" class="metric-icon"></i>
-                                    <span>Revenue Impact: $2.5M</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="cta-section">
-                <p class="cta-description">
-                    Want to see more projects and detailed case studies?
-                </p>
-                <div class="button-group">
-                    <button class="button button-primary" id="viewPortfolioBtn">
-                        <span>View Complete Portfolio</span>
-                        <span class="slide-indicator">
-                            <i data-lucide="chevron-down"></i>
-                        </span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-        
-        // Handle portfolio expansion
-        const viewPortfolioBtn = document.getElementById('viewPortfolioBtn');
-        const hiddenProjects = document.getElementById('hiddenProjects');
-        const slideIndicator = document.querySelector('.slide-indicator');
-        let isExpanded = false;
-        
-        viewPortfolioBtn.addEventListener('click', () => {
-            if (!isExpanded) {
-                hiddenProjects.classList.add('show');
-                slideIndicator.classList.add('rotate-180');
-                viewPortfolioBtn.querySelector('span').textContent = 'Show Less Projects';
-                isExpanded = true;
-                
-                // Smooth scroll to new content
-                setTimeout(() => {
-                    hiddenProjects.scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'start' 
-                    });
-                }, 300);
-            } else {
-                hiddenProjects.classList.remove('show');
-                slideIndicator.classList.remove('rotate-180');
-                viewPortfolioBtn.querySelector('span').textContent = 'View Complete Portfolio';
-                isExpanded = false;
-            }
-        });
-        
-        // Add scroll animations for project cards
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-        
-        // Observe all project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            observer.observe(card);
-        });
-        
-        // Add hover effects for better interactivity
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-8px)';
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-            });
-        });
-    </script>
-</body>
-</html> 
-
-
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Section</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background: #ffffff;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .section {
-            padding: 80px 0;
-            background: #ffffff;
-        }
-
-        .section-content {
-            max-width: 1024px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-
-        .section-title {
-            font-size: 2.25rem;
-            font-weight: bold;
-            color: #1a1a1a;
-            margin-bottom: 16px;
-        }
-
-        .section-subtitle {
-            font-size: 1.25rem;
-            color: #64748b;
-        }
-
-        .grid {
-            display: grid;
-            gap: 32px;
-        }
-
-        .grid-3 {
-            grid-template-columns: 2fr 1fr;
-        }
-
-        .grid-2 {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            border: none;
-        }
-
-        .card-header {
-            padding: 24px 24px 0 24px;
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-        }
-
-        .card-content {
-            padding: 24px;
-        }
-
-        .form-space {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .label {
-            font-weight: 500;
-            color: #374151;
-            font-size: 0.875rem;
-        }
-
-        .input, .textarea {
-            padding: 12px 16px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.2s;
-        }
-
-        .input:focus, .textarea:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .textarea {
-            min-height: 120px;
-            resize: vertical;
-            font-family: inherit;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .checkbox {
-            width: 16px;
-            height: 16px;
-            accent-color: #3b82f6;
-        }
-
-        .checkbox-label {
-            font-size: 0.875rem;
-            color: #64748b;
-        }
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: none;
-            text-decoration: none;
-        }
-
-        .button-hero {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            color: white;
-            width: 100%;
-            padding: 16px 24px;
-        }
-
-        .button-hero:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
-        }
-
-        .button-outline {
-            background: transparent;
-            border: 1px solid #d1d5db;
-            color: #374151;
-            width: 100%;
-            justify-content: flex-start;
-        }
-
-        .button-outline:hover {
-            background: #f9fafb;
-            border-color: #9ca3af;
-        }
-
-        .icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 8px;
-            color: #3b82f6;
-        }
-
-        .icon-sm {
-            width: 16px;
-            height: 16px;
-        }
-
-        .icon-success {
-            color: #22c55e;
-        }
-
-        .response-time-text {
-            font-size: 0.875rem;
-            color: #64748b;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-        }
-
-        .sidebar-space {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .quick-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .section-heading {
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        .success-card {
-            background: rgba(34, 197, 94, 0.05);
-        }
-
-        .response-times {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .response-time-item {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.875rem;
-        }
-
-        .response-time-value {
-            font-weight: 500;
-            color: #22c55e;
-        }
-
-        .availability-card {
-            text-align: center;
-        }
-
-        .availability-status {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 12px;
-        }
-
-        .status-dot {
-            width: 12px;
-            height: 12px;
-            background: #22c55e;
-            border-radius: 50%;
-            margin-right: 8px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .status-text {
-            font-weight: 600;
-            color: #22c55e;
-        }
-
-        .availability-description {
-            font-size: 0.875rem;
-            color: #64748b;
-        }
-
-        @media (max-width: 1024px) {
-            .grid-3 {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-            
-            .section-title {
-                font-size: 1.875rem;
-            }
-            
-            .section {
-                padding: 60px 0;
-            }
-        }
-    </style>
-</head>
-<body>
-    <section class="section">
-        <div class="container">
-            <div class="section-content">
+        <section id="about" class="section about-section">
+            <div class="container">
                 <!-- Section Header -->
                 <div class="section-header">
                     <h2 class="section-title">
-                        Let's Build the Future Together
+                        Expertise That Delivers Results
                     </h2>
                     <p class="section-subtitle">
-                        Ready to discuss your next project? 
+                        I specialize in validating, optimizing, and delivering high-quality solutions 
+                        that solve real business problems with measurable impact.
                     </p>
                 </div>
 
                 <div class="grid grid-3">
-                    <!-- Contact Form -->
+                    <!-- Skills Section -->
                     <div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">
+                        <h3 class="section-heading">Technical Skills</h3>
+                        <div class="grid grid-2">
+                            <!-- Languages -->
+                            <div class="card">
+                                <div class="card-header">
                                     <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
                                     </svg>
-                                    Get In Touch
-                                </h3>
+                                    <h4 class="card-title">Languages</h4>
+                                </div>
+                                <div class="badge-container">
+                                    <span class="badge">Python</span>
+                                    <span class="badge">JavaScript</span>
+                                    <span class="badge">TypeScript</span>
+                                    <span class="badge">SQL</span>
+                                    <span class="badge">R</span>
+                                </div>
                             </div>
-                            <div class="card-content">
-                                <form class="form-space" id="contactForm">
-                                    <div >
+
+                            <!-- ML/AI -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                    </svg>
+                                    <h4 class="card-title">ML/AI</h4>
+                                </div>
+                                <div class="badge-container">
+                                    <span class="badge">TensorFlow</span>
+                                    <span class="badge">PyTorch</span>
+                                    <span class="badge">Scikit-learn</span>
+                                    <span class="badge">OpenAI API</span>
+                                    <span class="badge">Hugging Face</span>
+                                </div>
+                            </div>
+
+                            <!-- Data Engineering -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
+                                    </svg>
+                                    <h4 class="card-title">Data Engineering</h4>
+                                </div>
+                                <div class="badge-container">
+                                    <span class="badge">Apache Kafka</span>
+                                    <span class="badge">PostgreSQL</span>
+                                    <span class="badge">MongoDB</span>
+                                    <span class="badge">Redis</span>
+                                    <span class="badge">Elasticsearch</span>
+                                </div>
+                            </div>
+
+                            <!-- Cloud & DevOps -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"/>
+                                    </svg>
+                                    <h4 class="card-title">Cloud & DevOps</h4>
+                                </div>
+                                <div class="badge-container">
+                                    <span class="badge">AWS</span>
+                                    <span class="badge">Docker</span>
+                                    <span class="badge">Kubernetes</span>
+                                    <span class="badge">CI/CD</span>
+                                    <span class="badge">Terraform</span>
+                                </div>
+                            </div>
+
+                            <!-- Development -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                    </svg>
+                                    <h4 class="card-title">Development</h4>
+                                </div>
+                                <div class="badge-container">
+                                    <span class="badge">React</span>
+                                    <span class="badge">Node.js</span>
+                                    <span class="badge">FastAPI</span>
+                                    <span class="badge">Git</span>
+                                    <span class="badge">Testing Frameworks</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievements Section -->
+                    <div>
+                        <h3 class="section-heading">Recognition</h3>
+                        <div>
+                            <!-- Top Performer Award -->
+                            <div class="card achievement-card">
+                                <div class="achievement-content">
+                                    <div class="achievement-icon">
+                                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="achievement-details">
+                                        <div class="achievement-header">
+                                            <h4 class="achievement-title">Top Performer Award</h4>
+                                            <span class="achievement-year">2024</span>
+                                        </div>
+                                        <p class="achievement-description">Recognized for delivering 3 critical projects ahead of schedule</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- MS Computer Science -->
+                            <div class="card achievement-card">
+                                <div class="achievement-content">
+                                    <div class="achievement-icon">
+                                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="achievement-details">
+                                        <div class="achievement-header">
+                                            <h4 class="achievement-title">MS Computer Science</h4>
+                                            <span class="achievement-year">2023</span>
+                                        </div>
+                                        <p class="achievement-description">Specialization in Machine Learning and Data Systems</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Senior Engineer Promotion -->
+                            <div class="card achievement-card">
+                                <div class="achievement-content">
+                                    <div class="achievement-icon">
+                                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6m8 0H8"/>
+                                        </svg>
+                                    </div>
+                                    <div class="achievement-details">
+                                        <div class="achievement-header">
+                                            <h4 class="achievement-title">Senior Engineer Promotion</h4>
+                                            <span class="achievement-year">2023</span>
+                                        </div>
+                                        <p class="achievement-description">Fast-tracked promotion based on project impact and leadership</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Statement -->
+                <div class="personal-statement">
+                    <div>
+                        <h3 class="statement-title">My Approach</h3>
+                        <p class="statement-text">
+                            I believe in building solutions that not only work but create lasting value. 
+                            Every project starts with understanding the real problem, validating assumptions, 
+                            and delivering measurable outcomes that move the business forward.
+                        </p>
+                        <div class="stats">
+                            <div class="stat">
+                                <div class="stat-number">3+</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number success">15+</div>
+                                <div class="stat-label">Projects Completed</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number primary">98%</div>
+                                <div class="stat-label">Client Satisfaction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-description">
+                        Solving complex problems with data-driven solutions. Each project showcases measurable impact 
+                        and demonstrates expertise across the full technology stack.
+                    </p>
+                </div>
+                
+                <div class="projects-grid">
+                    <!-- Main Projects -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <span>AI Data Pipeline</span>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">AI-Powered Data Pipeline Optimization</h3>
+                            <p class="project-description">
+                                Redesigned and optimized a legacy data processing system for a Fortune 500 company, 
+                                implementing advanced ML algorithms and automated workflows.
+                            </p>
+                            
+                            <div class="project-problem">
+                                <h4>Problem</h4>
+                                <p>The existing data pipeline was processing 10TB of daily data with significant delays, 
+                                taking 8+ hours per batch and causing downstream analytics delays that impacted business decisions.</p>
+                            </div>
+                            
+                            <div class="project-solution">
+                                <h4>Solution</h4>
+                                <p>Implemented Apache Spark with optimized partitioning strategies, introduced ML-based anomaly 
+                                detection for data quality, and built automated monitoring with real-time alerting systems.</p>
+                            </div>
+                            
+                            <div class="project-results">
+                                <h4>Results</h4>
+                                <ul class="results-list">
+                                    <li>Reduced processing time from 8 hours to 3 hours (62.5% improvement)</li>
+                                    <li>Improved data quality scores by 35% through ML-based validation</li>
+                                    <li>Decreased infrastructure costs by $50K annually</li>
+                                    <li>Enabled real-time analytics for critical business metrics</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="project-technologies">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Apache Spark</span>
+                                <span class="tech-tag">MLflow</span>
+                                <span class="tech-tag">Apache Airflow</span>
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                            </div>
+                            
+                                <div class="project-metrics">
+                                    <div class="metric">
+                                        <i data-lucide="trending-up" class="metric-icon"></i>
+                                        <span>Engagement: +180%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <i data-lucide="users" class="metric-icon"></i>
+                                        <span>Churn Reduction: 22%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <i data-lucide="dollar-sign" class="metric-icon"></i>
+                                        <span>Revenue Impact: $2.5M</span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="projects-grid">
+                    <!-- Main Projects -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <span>AI Data Pipeline</span>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">AI-Powered Data Pipeline Optimization</h3>
+                            <p class="project-description">
+                                Redesigned and optimized a legacy data processing system for a Fortune 500 company, 
+                                implementing advanced ML algorithms and automated workflows.
+                            </p>
+                            
+                            <div class="project-problem">
+                                <h4>Problem</h4>
+                                <p>The existing data pipeline was processing 10TB of daily data with significant delays, 
+                                taking 8+ hours per batch and causing downstream analytics delays that impacted business decisions.</p>
+                            </div>
+                            
+                            <div class="project-solution">
+                                <h4>Solution</h4>
+                                <p>Implemented Apache Spark with optimized partitioning strategies, introduced ML-based anomaly 
+                                detection for data quality, and built automated monitoring with real-time alerting systems.</p>
+                            </div>
+                            
+                            <div class="project-results">
+                                <h4>Results</h4>
+                                <ul class="results-list">
+                                    <li>Reduced processing time from 8 hours to 3 hours (62.5% improvement)</li>
+                                    <li>Improved data quality scores by 35% through ML-based validation</li>
+                                    <li>Decreased infrastructure costs by $50K annually</li>
+                                    <li>Enabled real-time analytics for critical business metrics</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="project-technologies">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Apache Spark</span>
+                                <span class="tech-tag">MLflow</span>
+                                <span class="tech-tag">Apache Airflow</span>
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                            </div>
+                            
+                                     <div class="project-metrics">
+                                    <div class="metric">
+                                        <i data-lucide="trending-up" class="metric-icon"></i>
+                                        <span>Engagement: +180%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <i data-lucide="users" class="metric-icon"></i>
+                                        <span>Churn Reduction: 22%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <i data-lucide="dollar-sign" class="metric-icon"></i>
+                                        <span>Revenue Impact: $2.5M</span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="projects-grid">
+                    <!-- Main Projects -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <span>AI Data Pipeline</span>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">AI-Powered Data Pipeline Optimization</h3>
+                            <p class="project-description">
+                                Redesigned and optimized a legacy data processing system for a Fortune 500 company, 
+                                implementing advanced ML algorithms and automated workflows.
+                            </p>
+                            
+                            <div class="project-problem">
+                                <h4>Problem</h4>
+                                <p>The existing data pipeline was processing 10TB of daily data with significant delays, 
+                                taking 8+ hours per batch and causing downstream analytics delays that impacted business decisions.</p>
+                            </div>
+                            
+                            <div class="project-solution">
+                                <h4>Solution</h4>
+                                <p>Implemented Apache Spark with optimized partitioning strategies, introduced ML-based anomaly 
+                                detection for data quality, and built automated monitoring with real-time alerting systems.</p>
+                            </div>
+                            
+                            <div class="project-results">
+                                <h4>Results</h4>
+                                <ul class="results-list">
+                                    <li>Reduced processing time from 8 hours to 3 hours (62.5% improvement)</li>
+                                    <li>Improved data quality scores by 35% through ML-based validation</li>
+                                    <li>Decreased infrastructure costs by $50K annually</li>
+                                    <li>Enabled real-time analytics for critical business metrics</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="project-technologies">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Apache Spark</span>
+                                <span class="tech-tag">MLflow</span>
+                                <span class="tech-tag">Apache Airflow</span>
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                            </div>
+                            
+                                <div class="project-metrics">
+                                    <div class="metric">
+                                        <i data-lucide="trending-up" class="metric-icon"></i>
+                                        <span>Engagement: +180%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <i data-lucide="users" class="metric-icon"></i>
+                                        <span>Churn Reduction: 22%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <i data-lucide="dollar-sign" class="metric-icon"></i>
+                                        <span>Revenue Impact: $2.5M</span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!-- Hidden Additional Projects -->
+                    <div class="hidden-projects" id="hiddenProjects">
+                        <div class="project-card">
+                            <div class="project-image">
+                                <span>Microservices Platform</span>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Cloud-Native Microservices Platform</h3>
+                                <p class="project-description">
+                                    Architected and deployed a scalable microservices platform for a healthcare startup, 
+                                    enabling rapid feature development and seamless scaling.
+                                </p>
+                                
+                                <div class="project-problem">
+                                    <h4>Problem</h4>
+                                    <p>Monolithic architecture was limiting development speed and causing system-wide outages 
+                                    when individual components failed, affecting patient care workflows.</p>
+                                </div>
+                                
+                                <div class="project-solution">
+                                    <h4>Solution</h4>
+                                    <p>Designed cloud-native microservices with Kubernetes orchestration, implemented service mesh 
+                                    for security and observability, and established comprehensive monitoring and alerting.</p>
+                                </div>
+                                
+                                <div class="project-results">
+                                    <h4>Results</h4>
+                                    <ul class="results-list">
+                                        <li>Achieved 99.9% system uptime with fault isolation</li>
+                                        <li>Reduced deployment time from 2 hours to 15 minutes</li>
+                                        <li>Enabled independent team scaling across 5 development teams</li>
+                                        <li>Improved system response time by 45%</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="project-technologies">
+                                    <span class="tech-tag">Kubernetes</span>
+                                    <span class="tech-tag">Docker</span>
+                                    <span class="tech-tag">Go</span>
+                                    <span class="tech-tag">Istio</span>
+                                    <span class="tech-tag">Prometheus</span>
+                                    <span class="tech-tag">Helm</span>
+                                    <span class="tech-tag">GitOps</span>
+                                </div>
+                                
+                                <div class="project-metrics">
+                                    <div class="metric">
+                                        <i data-lucide="shield" class="metric-icon"></i>
+                                        <span>System Uptime: 99.9%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <i data-lucide="clock" class="metric-icon"></i>
+                                        <span>Deployment Time: -87%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <i data-lucide="zap" class="metric-icon"></i>
+                                        <span>Response Time: +45%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-image">
+                                <span>ML Recommendation Engine</span>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Intelligent Recommendation Engine</h3>
+                                <p class="project-description">
+                                    Developed an advanced ML recommendation system for a streaming platform, implementing 
+                                    collaborative filtering and deep learning models to personalize user experiences.
+                                </p>
+                                
+                                <div class="project-problem">
+                                    <h4>Problem</h4>
+                                    <p>Users were experiencing poor content discovery with only 12% engagement rate on recommended 
+                                    content, leading to increased churn and reduced viewing time.</p>
+                                </div>
+                                
+                                <div class="project-solution">
+                                    <h4>Solution</h4>
+                                    <p>Implemented hybrid recommendation system combining collaborative filtering, content-based 
+                                    filtering, and neural networks with real-time A/B testing framework for continuous optimization.</p>
+                                </div>
+                                
+                                <div class="project-results">
+                                    <h4>Results</h4>
+                                    <ul class="results-list">
+                                        <li>Increased recommendation engagement by 180% (12% to 33.6%)</li>
+                                        <li>Extended average viewing sessions by 25 minutes</li>
+                                        <li>Reduced user churn rate by 22%</li>
+                                        <li>Generated $2.5M additional revenue through improved retention</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="project-technologies">
+                                    <span class="tech-tag">TensorFlow</span>
+                                    <span class="tech-tag">PyTorch</span>
+                                    <span class="tech-tag">Apache Kafka</span>
+                                    <span class="tech-tag">Redis</span>
+                                    <span class="tech-tag">Spark</span>
+                                    <span class="tech-tag">MLOps</span>
+                                    <span class="tech-tag">A/B Testing</span>
+                                </div>
+                                
+                                <div class="project-metrics">
+                                    <div class="metric">
+                                        <i data-lucide="trending-up" class="metric-icon"></i>
+                                        <span>Engagement: +180%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <i data-lucide="users" class="metric-icon"></i>
+                                        <span>Churn Reduction: 22%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <i data-lucide="dollar-sign" class="metric-icon"></i>
+                                        <span>Revenue Impact: $2.5M</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cta-section">
+                    <p class="cta-description">
+                        Want to see more projects and detailed case studies?
+                    </p>
+                    <div class="button-group">
+                        <button class="button button-hero" id="viewPortfolioBtn">
+                            <span>View Complete Portfolio</span>
+                            <span class="slide-indicator">
+                                <i data-lucide="chevron-down"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="section-content">
+                    <!-- Section Header -->
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            Let's Build the Future Together
+                        </h2>
+                        <p class="section-subtitle">
+                            Ready to discuss your next project? 
+                        </p>
+                    </div>
+
+                    <div class="grid grid-3">
+                        <!-- Contact Form -->
+                        <div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                        </svg>
+                                        Get In Touch
+                                    </h3>
+                                </div>
+                                <div class="card-content">
+                                    <form class="form-space" id="contactForm">
                                         <div class="form-group">
                                             <label class="label" for="name">Name *</label>
                                             <input class="input" id="name" type="text" placeholder="Your name" required>
@@ -2097,237 +711,97 @@
                                             <label class="label" for="email">Email *</label>
                                             <input class="input" id="email" type="email" placeholder="your.email@company.com" required>
                                         </div>
-                                    </div>    
-                                    <div class="form-group">
-                                        <label class="label" for="subject">Subject</label>
-                                        <input class="input" id="subject" type="text" placeholder="Project discussion, collaboration, etc.">
-                                    </div>
+                                        <div class="form-group">
+                                            <label class="label" for="subject">Subject</label>
+                                            <input class="input" id="subject" type="text" placeholder="Project discussion, collaboration, etc.">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="label" for="message">Message *</label>
+                                            <textarea class="textarea" id="message" placeholder="Tell me about your project, challenges, or how I can help..." required></textarea>
+                                        </div>
+
+                                        <button type="submit" class="button button-hero">
+                                            Send Message
+                                            <svg style="margin-left: 8px; width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                            </svg>
+                                        </button>
+
+                                        <p class="response-time-text">
+                                            <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+                                            Usually respond within 24 hours
+                                        </p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sidebar -->
+                        <div class="sidebar-space">
+                            <!-- Quick Actions -->
+                            <div class="card">
+                                <div class="card-content">
+                                    <h3 class="section-heading">Quick Actions</h3>
                                     
-                                    <div class="form-group">
-                                        <label class="label" for="message">Message *</label>
-                                        <textarea class="textarea" id="message" placeholder="Tell me about your project, challenges, or how I can help..." required></textarea>
+                                    <div class="quick-actions">
+                                        <button class="button button-outline" onclick="downloadResume()">
+                                            <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                            </svg>
+                                            Download Resume
+                                        </button>
+                                        
+                                        <a href="https://www.linkedin.com/in/vinayak-naik1002/" class="button button-outline" target="_blank">
+                                            <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                            </svg>
+                                            View LinkedIn
+                                        </a>
+                                        
+                                        <a href="https://github.com/vinayaknaik1002" class="button button-outline" target="_blank">
+                                            <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                            </svg>
+                                            View GitHub
+                                        </a>
                                     </div>
+                                </div>
+                            </div>
 
-                                    <button type="submit" class="button button-hero">
-                                        Send Message
-                                        <svg style="margin-left: 8px; width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            <!-- Response Time -->
+                            <div class="card success-card">
+                                <div class="card-content">
+                                    <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                        <svg class="icon icon-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                         </svg>
-                                    </button>
-
-                                    <p class="response-time-text">
-                                        <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                        </svg>
+                                        <h3 class="section-heading" style="margin: 0;">Fast Response</h3>
+                                    </div>
+                                    <p style="font-size: 0.875rem; color: #64748b;">
+                                        I prioritize communication and aim to respond to all inquiries within 24 hours.
                                     </p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sidebar -->
-                    <div class="sidebar-space">
-                        <!-- Quick Actions -->
-                        <div class="card">
-                            <div class="card-content">
-                                <h3 class="section-heading">Quick Actions</h3>
-                                
-                                <div class="quick-actions">
-                                    <button class="button button-outline" onclick="downloadResume()">
-                                        <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                        </svg>
-                                        Download Resume
-                                    </button>
-                                    
-                                    <a href="https://www.linkedin.com/in/vinayak-naik1002/" class="button button-outline" target="_blank">
-                                        <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                                        </svg>
-                                        View LinkedIn
-                                    </a>
-                                    
-                                    <a href="https://github.com/projects" class="button button-outline" target="_blank">
-                                        <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                        </svg>
-                                        View GitHub
-                                    </a>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Response Time -->
-                        <div class="card success-card">
-                            <div class="card-content">
-                                <div style="display: flex; align-items: center; margin-bottom: 12px;">
-                                    <svg class="icon icon-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                    </svg>
-                                    <h3 class="section-heading" style="margin: 0;">Fast Response</h3>
-                                </div>
-                                <p style="font-size: 0.875rem; color: #64748b; margin-bottom: 16px;">
-                                    I prioritize communication and aim to respond to all inquiries within 24 hours.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Availability -->
-                        <div class="card">
-                            <div class="card-content availability-card">
-                                <div class="availability-status">
-                                    <div class="status-dot"></div>
-                                    <span class="status-text">Available for Projects</span>
+                            <!-- Availability -->
+                            <div class="card">
+                                <div class="card-content availability-card">
+                                    <div class="availability-status">
+                                        <div class="status-dot"></div>
+                                        <span class="status-text">Available for Projects</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <script>
-        // Form submission handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
-
-    if (!name || !email || !message) {
-        alert('Please fill in all required fields.');
-        return;
-    }
-
-    const submitButton = document.querySelector('.button-hero');
-    const originalText = submitButton.innerHTML;
-
-    submitButton.innerHTML = 'Sending...';
-    submitButton.disabled = true;
-
-    // Prepare data for EmailJS
-    const templateParams = {
-        name: name,
-        email: email,
-        subject: subject,
-        message: message,
-    };
-   // 1️⃣ Send auto-reply to user 
-    emailjs.send("service_i4ou1sf", "template_1o320hm", templateParams)
-        .then(() => {
-            alert("Thank you for your message! I will get back to you soon.");
-            document.getElementById('contactForm').reset();
-            submitButton.innerHTML = originalText;
-            submitButton.disabled = false;
-        }, (error) => {
-            alert("Oops! Something went wrong: " + JSON.stringify(error));
-            submitButton.innerHTML = originalText;
-            submitButton.disabled = false;
-        });
-
-});
-
-        // document.getElementById('contactForm').addEventListener('submit', function(e) {
-        //     e.preventDefault();
-            
-        //     // Get form data
-        //     const name = document.getElementById('name').value;
-        //     const email = document.getElementById('email').value;
-        //     const subject = document.getElementById('subject').value;
-        //     const message = document.getElementById('message').value;
-        //     const resumeRequested = document.getElementById('resume').checked;
-            
-        //     // Basic validation
-        //     if (!name || !email || !message) {
-        //         alert('Please fill in all required fields.');
-        //         return;
-        //     }
-            
-        //     // Simulate form submission
-        //     const submitButton = document.querySelector('.button-hero');
-        //     const originalText = submitButton.innerHTML;
-            
-        //     submitButton.innerHTML = 'Sending...';
-        //     submitButton.disabled = true;
-            
-        //     // Simulate API call
-        //     setTimeout(() => {
-        //         alert('Thank you for your message! I will get back to you soon.');
-        //         document.getElementById('contactForm').reset();
-        //         submitButton.innerHTML = originalText;
-        //         submitButton.disabled = false;
-        //     }, 1500);
-        // });
-        
-        // Resume download handler
-        function downloadResume() {
-            // In a real implementation, this would download the actual resume file
-                alert("Resume download will begin shortly...");
-                window.open("assets/resume.pdf", "_blank");
-        }
-    </script>
-</body>
-</html>
         </section>
     </main>
 
-    <script>
-        // Navigation functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-            const navMobile = document.getElementById('navMobile');
-
-            // Mobile menu toggle
-            mobileMenuToggle.addEventListener('click', function() {
-                navMobile.classList.toggle('active');
-            });
-
-            // Navigation background on scroll
-            window.addEventListener('scroll', function() {
-                const nav = document.querySelector('.navigation');
-                if (window.scrollY > 50) {
-                    nav.style.background = 'rgba(255, 255, 255, 0.9)';
-                } else {
-                    nav.style.background = 'rgba(255, 255, 255, 0.8)';
-                }
-            });
-        });
-
-        // Close mobile menu
-        function closeMobileMenu() {
-            const navMobile = document.getElementById('navMobile');
-            navMobile.classList.remove('active');
-        }
-
-        // Utility functions
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-
-        function downloadResume() {
-                alert("Resume download will begin shortly...");
-                window.open("assets/resume.pdf", "_blank");
-        }
-
-        // Button hover effects
-        document.addEventListener('DOMContentLoaded', function() {
-            const heroButtons = document.querySelectorAll('.button');
-            
-            heroButtons.forEach(button => {
-                button.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-2px)';
-                });
-                
-                button.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-        });
-    </script>
+    <!-- External JavaScript -->
+    <script src="assets/js/main.js"></script>
 </body>
-</html>
