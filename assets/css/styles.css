@@ -597,19 +597,156 @@ body {
 
 .project-image {
     width: 300px;
-    height: 200px;
+    height: 280px;
     border-radius: 16px;
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     flex-shrink: 0;
+    position: relative;
+    overflow: hidden; /* Important: prevents image overflow */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    background: #f3f4f6; /* Fallback background */
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Makes image cover the entire container */
+    object-position: center; /* Centers the image */
+    border-radius: 0; /* Remove border-radius from img to prevent double rounding */
+    transition: transform 0.3s ease;
+    display: block; /* Removes any inline spacing */
+}
+
+@media (max-width: 768px) {
+    .project-image .image-text {
+        position: static;
+        transform: none;
+        background: none;
+        color: #333;
+        text-shadow: none;
+        margin-top: 10px;
+    }
+}
+.project-image:hover img {
+    transform: scale(1.05); /* Nice zoom effect on hover */
+}
+
+/* Alternative: If you want the image to fit without cropping */
+.project-image.fit-contain img {
+    object-fit: contain; /* Shows entire image without cropping */
+    object-position: center;
+}
+/* Optional: If you want a fallback when image doesn't load */
+.project-image::before {
+    content: "AI Data Pipeline";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     color: white;
     font-size: 1.1rem;
     font-weight: 600;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    z-index: 1;
+    opacity: 0; /* Hidden by default */
 }
 
+.project-image img:not([src]), 
+.project-image img[src=""] {
+    display: none;
+}
+
+.project-image:has(img:not([src])) ::before,
+.project-image:has(img[src=""]) ::before {
+    opacity: 1;
+}
+
+/* Project GitHub Link Button Styles */
+.project-github-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: #3b82f6;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    margin-top: 16px;
+    border: 2px solid #3b82f6;
+    width: fit-content;
+}
+
+.project-github-link:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: white;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.project-github-link:active {
+    transform: translateY(0);
+}
+
+.github-icon {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+}
+
+.project-github-link:hover .github-icon {
+    transform: scale(1.1);
+}
+
+/* Alternative button styles for variety */
+.project-github-link.style-outline {
+    background: transparent;
+    color: #3b82f6;
+    border: 2px solid #3b82f6;
+}
+
+.project-github-link.style-outline:hover {
+    background: #3b82f6;
+    color: white;
+}
+
+.project-github-link.style-gradient {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    border: 2px solid transparent;
+}
+
+.project-github-link.style-gradient:hover {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .project-github-link {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .github-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Remove project image container styles - not needed anymore */
+.project-image {
+    border-radius: 16px; /* Full rounded corners for standalone image */
+}
 .project-content {
     flex: 1;
 }
@@ -652,17 +789,6 @@ body {
 .project-solution p {
     color: #4b5563;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 .project-results {
     margin-bottom: 1.5rem;
