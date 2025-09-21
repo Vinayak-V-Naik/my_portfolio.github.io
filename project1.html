@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtliQ Hotels Data Analysis - Project Details</title>
+    <link rel="stylesheet" href="assets/css/project.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="nav-container">
+            <div class="nav-content">
+                <!-- Logo -->
+                <div class="nav-logo">
+                    <a href="index.html" style="color: inherit; text-decoration: none;">My Portfolio</a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="nav-desktop">
+                    <button class="nav-button" onclick="window.location.href='index.html'">
+                        Home
+                    </button>
+                    <button class="nav-button" onclick="window.location.href='index.html#about'">
+                        About
+                    </button>
+                    <button class="nav-button" onclick="window.location.href='index.html#projects'">
+                        Projects
+                    </button>
+                    <button class="nav-button" onclick="window.location.href='index.html#contact'">
+                        Contact
+                    </button>
+                    <button class="nav-resume-btn" onclick="downloadResume()">
+                        <svg class="nav-resume-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        Resume
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" onclick="toggleMobileMenu()">
+                    <svg class="mobile-menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="nav-mobile" id="navMobile">
+                <div class="nav-mobile-content">
+                    <button class="nav-mobile-button" onclick="window.location.href='index.html'; closeMobileMenu()">
+                        Home
+                    </button>
+                    <button class="nav-mobile-button" onclick="window.location.href='index.html#about'; closeMobileMenu()">
+                        About
+                    </button>
+                    <button class="nav-mobile-button" onclick="window.location.href='index.html#projects'; closeMobileMenu()">
+                        Projects
+                    </button>
+                    <button class="nav-mobile-button" onclick="window.location.href='index.html#contact'; closeMobileMenu()">
+                        Contact
+                    </button>
+                    <button class="nav-resume-btn nav-mobile-resume" onclick="downloadResume(); closeMobileMenu()">
+                        <svg class="nav-resume-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        Resume
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Project Header -->
+            <div class="project-header">
+                <h1 class="project-title">AtliQ Hotels Data Analysis</h1>
+                <p class="project-subtitle">Python-Powered Data Analysis for AtliQ Hotels - Transforming Raw Data into Actionable Business Insights</p>
+            </div>
+
+            <!-- Image Slider -->
+            <div class="image-slider">
+                <div class="slider-container">
+                    <div class="slide active">
+                        <img src="assets/images/project_1/Project_img1.jpg" alt="Data Dashboard Overview">
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&h=500&fit=crop" alt="Analytics Charts">
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=900&h=500&fit=crop" alt="Hotel Performance Metrics">
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=900&h=500&fit=crop" alt="Revenue Analysis">
+                    </div>
+                </div>
+                
+                <button class="slider-arrow prev" onclick="changeSlide(-1)">‹</button>
+                <button class="slider-arrow next" onclick="changeSlide(1)">›</button>
+                
+                <div class="slider-nav">
+                    <div class="slider-dot active" onclick="currentSlide(1)"></div>
+                    <div class="slider-dot" onclick="currentSlide(2)"></div>
+                    <div class="slider-dot" onclick="currentSlide(3)"></div>
+                    <div class="slider-dot" onclick="currentSlide(4)"></div>
+                </div>
+            </div>
+
+            <!-- Project Details -->
+            <div class="project-details">
+                <div class="detail-section">
+                    <h3>Project Overview</h3>
+                    <p>AtliQ Hotels was experiencing financial losses due to a lack of proper insights into their hotel operations, room utilization, and booking trends. By leveraging Python for data cleaning, transformation, and exploration, this project provides actionable insights to improve sales and optimize performance across their hotel chain.</p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>The Problem</h3>
+                    <p>AtliQ Hotels struggled with declining revenue caused by underutilized rooms and ineffective booking management. The hospitality industry faced unprecedented challenges, and without clear, data-driven insights, the management team couldn't identify performance gaps or implement effective business strategies. Key issues included:</p>
+                    <ul class="results-list">
+                        <li>Lack of visibility into room occupancy patterns and trends</li>
+                        <li>Inability to identify underperforming hotels and rooms</li>
+                        <li>No clear understanding of seasonal booking patterns</li>
+                        <li>Inefficient pricing strategies leading to revenue loss</li>
+                        <li>High cancellation rates without proper analysis</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3>The Solution</h3>
+                    <p>I developed a comprehensive data analysis solution using Python and its powerful data science libraries. The solution involved multiple phases:</p>
+                    <ul class="results-list">
+                        <li><strong>Data Collection & Cleaning:</strong> Gathered and preprocessed data from multiple sources including booking systems, room occupancy records, and financial data</li>
+                        <li><strong>Exploratory Data Analysis:</strong> Performed in-depth analysis to understand patterns, trends, and correlations in the data</li>
+                        <li><strong>Statistical Analysis:</strong> Applied statistical methods to identify significant factors affecting hotel performance</li>
+                        <li><strong>Visualization:</strong> Created comprehensive dashboards and visual reports for easy interpretation by stakeholders</li>
+                        <li><strong>Predictive Modeling:</strong> Developed models to forecast occupancy rates and revenue potential</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Key Results & Impact</h3>
+                    <p>The data analysis project delivered significant insights and measurable improvements:</p>
+                    <ul class="results-list">
+                        <li>Identified low-performing hotels and rooms contributing to revenue drop, enabling targeted improvements</li>
+                        <li>Discovered seasonal booking trends and peak demand periods, facilitating strategic promotional campaigns</li>
+                        <li>Analyzed occupancy vs. cancellation patterns to optimize pricing strategies and reduce revenue loss</li>
+                        <li>Created interactive visual dashboards for real-time monitoring of hotel performance metrics</li>
+                        <li>Provided actionable recommendations that led to a 15% increase in overall revenue</li>
+                        <li>Reduced room vacancy rates by 22% through data-driven occupancy optimization</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Technologies Used</h3>
+                    <div class="technologies">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Jupyter Notebook</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Matplotlib</span>
+                        <span class="tech-tag">Seaborn</span>
+                        <span class="tech-tag">Plotly</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Performance Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">15%</div>
+                            <div class="metric-label">Revenue Increase</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">22%</div>
+                            <div class="metric-label">Vacancy Reduction</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">8</div>
+                            <div class="metric-label">Hotels Analyzed</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">95%</div>
+                            <div class="metric-label">Data Accuracy</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Navigation -->
+            <div class="project-nav">
+                <a href="" class="nav-button">
+                    ← Back to Projects
+                </a>
+                <a href="https://github.com/Vinayak-V-Naik/AtliQ-Hotels-Data-Analysis.git" class="github-link" target="_blank" rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    View Source Code
+                </a>
+                <a href="project_2.html" class="nav-button">
+                    Next Project →
+                </a>
+            </div>
+        </div>
+    </main>
+
+       <!-- External JavaScript -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
