@@ -486,6 +486,11 @@ body {
     padding: 8px;
     background: rgba(59, 130, 246, 0.1);
     border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
 }
 
 .achievement-details {
